@@ -32,9 +32,10 @@ outputs:
 # Tell Concourse the commands it should execute, in this Task
 # Build an OCI image as a .tar file. Skip unit tests, because we've already run them in the previous Job
 #     mvn compile jib:buildTar ... -DskipTests
+# ls -l git/;mvn -B -X -f git/pom.xml clean package jib:buildTar -DoutputDirectory=$(pwd)/image/camel-sports-api.tar;ls -l git/target/;
 run:
   path: /bin/sh
   args:
   - -c
   - |
-    ls -l git/;mvn -B -X -f git/pom.xml clean package jib:buildTar -DoutputDirectory=$(pwd)/image/camel-sports-api.tar;ls -l git/target/;
+    docker build -t camel-sports-api:latest -f git/Dockerfile .;docker images
