@@ -28,4 +28,4 @@ run:
   args:
   - -c
   - |
-    mvn test
+    ls -l;echo $JAVA_HOME;java --version;mvn --version;mvn -X test
