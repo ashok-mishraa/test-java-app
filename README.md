@@ -1,3 +1,4 @@
+
 # Camel Sports API (JSON in REST services)
 
 This is a demo that shows how to use Apache Camel on Spring Boot to expose a REST service.
