@@ -5,7 +5,7 @@ resources:
   icon: gitlab
   type: git
   source:
-    uri: https://github.com/tutorialworks/camel-sports-api.git
+    uri: https://github.com/ashok-mishraa/test-java-app.git
     branch: main
 - name: image
   type: registry-image
