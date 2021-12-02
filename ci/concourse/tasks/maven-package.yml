@@ -10,8 +10,8 @@ container_limits: {}
 image_resource:
   type: registry-image
   source:
-    repository: docker
-    tag: latest
+    repository: maven
+    tag: 3.6.3
 
 # Cache Maven artifacts so we don't download the internet again
 # Caches are scoped to a particular task name inside of a pipeline's job.
@@ -38,4 +38,4 @@ run:
   args:
   - -c
   - |
-    docker build -t camel-sports-api:latest -f git/Dockerfile .;docker images
+    mvn -B -f git/pom.xml compile jib:buildTar -DskipTests -Djib.outputPaths.tar=$(pwd)/image/hello-java.tar

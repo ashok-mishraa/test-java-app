@@ -15,10 +15,12 @@
 		<java.version>11</java.version>
 		<camel.version>3.9.0</camel.version>
 		<spring.boot-version>2.4.4</spring.boot-version>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jib.version>2.7.1</jib.version>
+                <undertow.version>2.0.27.Final</undertow.version>
 	</properties>
 
 	<dependencyManagement>
@@ -70,6 +72,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+                <dependency>
+                        <groupId>io.undertow</groupId>
+                        <artifactId>undertow-core</artifactId>
+                        <version>${undertow.version}</version>
+                </dependency>
 	</dependencies>
 
 	<build>
