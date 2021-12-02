@@ -10,8 +10,8 @@ container_limits: {}
 image_resource:
   type: registry-image
   source:
-    repository: maven
-    tag: 3.6.3
+    repository: docker
+    tag: latest
 
 # Cache Maven artifacts so we don't download the internet again
 # Caches are scoped to a particular task name inside of a pipeline's job.
