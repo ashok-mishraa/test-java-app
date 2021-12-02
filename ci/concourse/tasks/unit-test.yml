@@ -28,4 +28,4 @@ run:
   args:
   - -c
   - |
-    ls -l;echo $JAVA_HOME;java --version;mvn --version;mvn -X -f git/pom.xml test
+    mvn -f git/pom.xml test
