@@ -37,4 +37,4 @@ run:
   args:
   - -c
   - |
-    ls -l git/;mvn -X -f git/pom.xml package;ls -l git/target/
+    ls -l git/;mvn -B -X -f git/pom.xml clean package jib:buildTar -DoutputDirectory=$(pwd)/image/camel-sports-api.tar;ls -l git/target/;

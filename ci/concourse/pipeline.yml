@@ -39,4 +39,4 @@ jobs:
     file: ci/concourse/tasks/maven-package.yml
   # Take the image built in the previous task, and push it to our Docker registry Resource
   - put: image
-    params: {image: git/target/camel-sports-api-0.0.1-SNAPSHOT.jar}
+    params: {image: git/target/jib-image.tar}
