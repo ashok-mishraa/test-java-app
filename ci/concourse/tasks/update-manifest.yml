@@ -27,9 +27,10 @@ outputs:
 # Tell Concourse the commands it should execute, in this Task
 # Build an OCI image as a .tar file. Skip unit tests, because we've already run them in the previous Job
 #     mvn compile jib:buildTar ... -DskipTests
+# python update-manifest.py --e dev --n 1 --a test-java-app --t temp; git add -A; git commit -m "Updating the manifest file with version temp";git push --set-upstream origin test-java-app-temp;
 run:
   path: /bin/sh
   args:
   - -c
   - |
-    python update-manifest.py --e dev --n 1 --a test-java-app --t temp; git add -A; git commit -m "Updating the manifest file with version temp";git push --set-upstream origin test-java-app-temp;
+    python update-manifest.py --e dev --n 1 --a test-java-app --t temp

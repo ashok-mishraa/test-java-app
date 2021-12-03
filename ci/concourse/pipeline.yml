@@ -50,8 +50,6 @@ jobs:
 - name: update_manifest
   plan:
   - get: git_manifest
-    passed:
-      - package
     trigger: true
   - task: manifest
     file: git/ci/concourse/tasks/update-manifest.yml
