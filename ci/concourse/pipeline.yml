@@ -52,4 +52,19 @@ jobs:
   - get: git_manifest
     trigger: true
   - task: manifest
-    file: git/ci/concourse/tasks/update-manifest.yml
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: ashokkumar54/python
+          tag: 3-8-code
+      inputs:
+        - name: git_manifest
+      run:
+        path: /bin/sh
+        args:
+        - c
+        - |
+          ls -l; ls -l git_manifest
+#        args: [git_manifest/update-manifest.py --e dev --n 1 --a test-java-app --t temp]
