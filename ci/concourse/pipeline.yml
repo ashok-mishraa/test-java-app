@@ -52,19 +52,4 @@ jobs:
   - get: git_manifest
     trigger: true
   - task: manifest
-    config:
-      platform: linux
-      image_resource:
-        type: registry-image-python
-        source:
-          repository: ashokkumar54/python
-          tag: 3-8-code
-      inputs:
-      - name: git_manifest
-# python update-manifest.py --e dev --n 1 --a test-java-app --t temp; git add -A; git commit -m "Updating the manifest file with version temp";git push --set-upstream origin test-java-app-temp;
-      run:
-        path: /bin/sh
-        args:
-        - -c
-        - |
-        python update-manifest.py --e dev --n 1 --a test-java-app --t temp
+    file: git/ci/concourse/tasks/update-manifest.yml
