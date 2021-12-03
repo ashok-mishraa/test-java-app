@@ -7,6 +7,12 @@ resources:
   source:
     uri: https://github.com/ashok-mishraa/test-java-app.git
     branch: main
+- name: git_manifest
+  icon: gitlab
+  type: git
+  source:
+    uri: https://github.com/ashok-mishraa/app-config-ArgoCD.git
+    branch: main
 - name: image
   type: registry-image
   icon: docker
@@ -40,3 +46,12 @@ jobs:
   # Take the image built in the previous task, and push it to our Docker registry Resource
   - put: image
     params: {image: image/hello-java.tar}
+
+- name: update_manifest
+  plan:
+  - get: git_manifest
+    passed:
+      - package
+    trigger: true
+  - task: manifest
+    file: git/ci/concourse/tasks/update-manifest.yml
