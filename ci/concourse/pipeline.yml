@@ -37,6 +37,7 @@ jobs:
 # then execute a 'build' task which is defined separately in the repository.
 - name: package
   plan:
+  - get: git_manifest
   - get: git # Concourse is stateless and needs to be given an external input to this Job.
     passed:
       - unit # The 'unit' job must have passed for this job to execute
@@ -48,8 +49,11 @@ jobs:
     params: {image: image/hello-java.tar}
 
 - name: update_manifest
+  serial: true
   plan:
   - get: git_manifest
+    passed:
+      - package
     trigger: true
   - task: manifest
     config:
@@ -64,7 +68,6 @@ jobs:
       run:
         path: /bin/sh
         args:
-        - c
+        - -c
         - |
-          ls -l; ls -l git_manifest
-#        args: [git_manifest/update-manifest.py --e dev --n 1 --a test-java-app --t temp]
+          git checkout -b test-app-java-demo;python --version; pip install pyyaml;python git_manifest/update-manifest.py --e dev --n 1 --a test-java-app --t temp;git add -A; git commit -m "updating application manifest";git push --set-upstream origin test-app-java-demo;
