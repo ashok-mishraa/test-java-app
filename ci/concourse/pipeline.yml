@@ -72,10 +72,9 @@ jobs:
         - |
           pip install pyyaml;
           python git_manifest/update-manifest.py --e dev --n 1 --a test-java-app --t temp;
-          cd git_manifest;
-          git config --global user.email "asmishra@nvidia.com"
-          git config --global user.name "Ashok Mishra"
-          git checkout -b test-java-app-demo;
-          git add -A;
-          git commit -m "updating application manifest for test-java-app";
-          git push --set-upstream origin test-app-java-demo;
+#          cd git_manifest;
+#          git config --global user.email "asmishra@nvidia.com"
+#          git config --global user.name "Ashok Mishra"
+#          git add -A;
+#          git commit -m "updating application manifest for test-java-app";
+#          git push --force origin HEAD:main
